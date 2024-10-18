@@ -13,28 +13,21 @@ import {
 } from '@react-email/components'
 import { TailwindWrapper } from './tailwind-wrapper'
 
-interface Feature {
-  title: string
-  description: string
-}
-
 interface DeploymentEmailProps {
   clientName?: string
   previewUrl?: string
-  features?: Feature[]
+  features?: string[]
 }
 
-export default function DeploymentEmail(
-  {
-    clientName = 'Valued Client',
-    previewUrl = 'https://example.com',
-    features = []
-  }: DeploymentEmailProps
-) {
+export default function DeploymentEmail({
+  clientName = 'Cliente Valorado',
+  previewUrl = 'https://example.com',
+  features = []
+}: DeploymentEmailProps) {
   return (
     <Html>
       <Head />
-      <Preview>New Deployment Successful!</Preview>
+      <Preview>¡Nuevo Despliegue Exitoso!</Preview>
       <TailwindWrapper>
         <Body className='bg-gray-100 font-sans'>
           <Container className='mx-auto my-8 max-w-2xl rounded-lg bg-white p-5 shadow-lg'>
@@ -43,31 +36,31 @@ export default function DeploymentEmail(
                 as='h1'
                 className='m-0 text-center text-2xl font-bold text-white'
               >
-                New Deployment Successful!
+                ¡Nuevo Despliegue Exitoso!
               </Heading>
             </Section>
             <Section className='px-8 py-6'>
               <Text className='text-base leading-6 text-gray-700'>
-                Dear {clientName},
+                Estimado {clientName},
               </Text>
               <Text className='text-base leading-6 text-gray-700'>
-                We&apos;re excited to inform you that a new version of your
-                project has been successfully deployed to Vercel.
+                Nos complace informarle que una nueva versión de su proyecto ha
+                sido desplegada con éxito en Vercel.
               </Text>
               <Text className='text-base leading-6 text-gray-700'>
-                You can preview the latest changes here:
+                Puede previsualizar los últimos cambios aquí:
               </Text>
               <Button
-                className='inline-block w-full rounded-md bg-blue-600 text-center font-bold text-white no-underline'
+                className='inline-block w-full rounded-md bg-blue-600 py-3 text-center font-bold text-white no-underline'
                 href={previewUrl}
               >
-                View Preview
+                Ver Previsualización
               </Button>
               <Heading
                 as='h2'
                 className='mb-4 mt-8 text-xl font-bold text-gray-800'
               >
-                New Features:
+                Nuevas Características:
               </Heading>
               {features.length > 0 ? (
                 features.map((feature, index) => (
@@ -75,28 +68,28 @@ export default function DeploymentEmail(
                     key={index}
                     className='mb-2 text-base leading-6 text-gray-700'
                   >
-                    <strong>{feature.title}:</strong> {feature.description}
+                    <strong>{feature}</strong>
                   </Text>
                 ))
               ) : (
                 <Text className='text-base leading-6 text-gray-700'>
-                  No new features in this deployment.
+                  No hay nuevas características en este despliegue.
                 </Text>
               )}
               <Text className='mt-6 text-base leading-6 text-gray-700'>
-                If you have any questions or need further assistance, please
-                don&apos;t hesitate to contact us.
+                Si tiene alguna pregunta o necesita más ayuda, por favor no dude
+                en contactarnos.
               </Text>
               <Text className='text-base leading-6 text-gray-700'>
-                Best regards,
+                Saludos cordiales,
                 <br />
-                Your Development Team
+                Adrian &quot;Nano&quot; Alvarez
               </Text>
             </Section>
             <Hr className='my-6 border-gray-300' />
             <Section className='text-center'>
               <Text className='text-sm text-gray-500'>
-                © 2023 Your Company Name. All rights reserved.
+                © 2024 adrian-alvarez.dev. Todos los derechos reservados.
               </Text>
             </Section>
           </Container>
